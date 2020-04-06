@@ -99,14 +99,15 @@ void Controller_AI_RayNamar::tick(float deltaTSec)
 		chooseNewMoveAndFlip();
 	}
 
-	if (curr_left_pressure == Personality::focused && (abs(imbalance) > 5000)) {
+	// if we are getting severe pressure, spam cheap units
+	if (curr_left_pressure == Personality::focused && (abs(imbalance) > 4000)) {
 		queuedMove = rushCheap;
 		std::cout << "Under Heavy Assault!" << std::endl;
 	}
 
 }
 
-// based on the dps potential of a side
+// pressure based on the dps potential of a side, as well as health and range
 void Controller_AI_RayNamar::calcEnemyPressure() {
 	float potentialLeftDamage = 0.f;
 	float potentialRightDamage = 0.f;

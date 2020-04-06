@@ -1,0 +1,30 @@
+﻿Design and Decision Making
+
+
+From the start, I knew I wanted to have 2 ‘personalities’ or paradigms that my AI would fluctuate between. At first, I was thinking of an offense/defense strategy, but after fiddling around with the game for a while, I realized that that wasn’t really how I played the game. When I played, I found myself always trying to pressure both sides of the map, unless I absolutely had to defend one side that my opponent was focusing on. Because of this, ‘offense’ and ‘defense’ were not good descriptors (or designs) for what I thought the best strategy should be. If the AI ever begins to play completely defensive, it will be hard to come back. You can only win with offense. This thought brought me to a new design idea: focused versus balanced.
+
+
+Balanced means always putting pressure in some form on both sides of the map. While this does mean that victory may not be swift, it does apply more pressure on the opponent to defend on two fronts. If they decide to ignore it, they will be burned by exposing the side they are ignoring.
+
+
+Focused is what happens when an opponent is truly trying to overwhelm one side. I also describe it as “aggressively defensive.” When the AI is in focused mode, it no longer applies equal pressure to both sides. Instead, it launches an assault on the more threatened side. I make this distinction because the moves the AI makes are still what it would be doing if it were assaulting (as opposed to completely switching to a ‘defensive’ strategy). However, if the threat level on one side is above a very high threshold, the AI will go into a ‘super focused’ mode, spamming as many cheap units on that side as physically possible. Theoretically, this will only ever happen in a last ditch effort to escape an imminent loss.
+
+
+Additionally, I rarely even spawn single units. Through lots of play and practice, I have found that single units are often useless, and will get cut down by a tower or group of opponents very quickly. Because of this, my units only spawn in groups or squadrons that I created and optimized based on power level and cost. (Single units will only spawn when cheap units are being spammed in an act of desperation).
+
+
+Through these choices, I hope to force the opponent to make a lot of important decisions quickly. Because my AI is aggressive on two fronts, opponents will have to be careful about how they balance their assault. And because I almost always spawn units in groups, opponents will have to be careful about sending out a soldier or an archer to try to counter me.
+
+
+
+
+Stretch Goals
+
+
+Personas: I have ‘Balanced’ and ‘Focused’ personas as I described above. They switch based on the enemy pressure (calcEnemyPressure, line 111) and influence which lane(s) to attack (lines 60-68). 
+
+
+AI Says Things: The AI will exclaim what squadrons it is sending out (lines 70-100), as well as when it is facing heavy pressure and needs to go into ‘super focused mode’ (line 105).
+
+
+Evaluates unit’s stats: The enemy threat level is based on the stats of all of the opposing mobs (calcEnemyPressure, lines 111-150). Additionally, the unit that gets rushed out while in super focused mode is based on its elixir cost (findMinElixirMob, 154-163).
